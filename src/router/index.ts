@@ -11,24 +11,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/:space/home',
+    path: '/home',
     component: Home,
     name: 'Home',
     meta: { middleware: [readSpace] },
   },
-  {
-    path: '/:space/login',
-    component: Login,
-    name: 'Login',
-    meta: { middleware: [readSpace] },
-  },
-  {
-    path: '/:space/listpage',
-    component: Listpage,
-    name: 'Listpage',
-    meta: { middleware: [readSpace] },
-  },
-  { path: '/createspace', component: CreateSpace, name: 'CreateSpace' },
 ];
 
 const router = new VueRouter({

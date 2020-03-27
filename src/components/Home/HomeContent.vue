@@ -1,32 +1,53 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div class="home-content">
+    <div>
+      <OakText
+        v-bind:data="data.count"
+        id="count"
+        @change="handleChange"
+        label="Number of paragraphs"
+      />
+      <OakButton
+        @click="generate"
+        label="Generate"
+        theme="primary"
+        variant="animate in"
+      />
+    </div>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+<script>
+import OakText from '@/oakui/OakText.vue';
+import OakButton from '@/oakui/OakButton.vue';
 
-@Component
-export default class HomeContent extends Vue {
-  @Prop() private msg!: string;
-}
+export default {
+  name: 'HomeContent',
+  components: {
+    OakText,
+    OakButton,
+  },
+  data: function() {
+    return {
+      data: {
+        count: 0,
+      },
+    };
+  },
+  methods: {
+    generate: function() {
+      alert(this.data.count);
+    },
+    handleChange: function() {
+      this.data[event.target.name] = event.target.value;
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.home-content {
+  padding: 100px;
 }
 </style>
