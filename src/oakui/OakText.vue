@@ -31,7 +31,7 @@ export default {
   props: {
     label: String,
     id: String,
-    data: String,
+    data: { value: [String, Number] },
     type: String,
     handleChange: Function,
     errorFields: Object,

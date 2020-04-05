@@ -1,5 +1,5 @@
 const state = {
-  theme: '',
+  darkmode: true,
   space: '',
   auth: {},
 };
@@ -11,8 +11,8 @@ const getters = {
 };
 
 const actions = {
-  setTheme({ commit }: any, theme: any) {
-    commit('UPDATE_PROFILE', { ...state, theme });
+  toggleDarkmode({ commit }: any) {
+    commit('UPDATE_PROFILE', { ...state, darkmode: !state.darkmode });
   },
   setSpace({ commit }: any, space: any) {
     commit('UPDATE_PROFILE', { ...state, space });
@@ -35,7 +35,7 @@ const actions = {
 
 const mutations = {
   UPDATE_PROFILE: (state: any, profile: any) => {
-    state.theme = profile.theme;
+    state.darkmode = profile.darkmode;
     state.space = profile.space;
     state.auth = profile.auth;
   },

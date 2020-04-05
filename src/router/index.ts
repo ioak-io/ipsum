@@ -1,9 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/components/Home/Home.vue';
-import Listpage from '@/components/Listpage/Listpage.vue';
-import CreateSpace from '@/components/Space/CreateSpace.vue';
-import Login from '@/components/Auth/Login.vue';
 
 import { middlewarePipeline, readSpace } from './middleware';
 
@@ -12,6 +9,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/home',
+    component: Home,
+    name: 'Home',
+    meta: { middleware: [readSpace] },
+  },
+  {
+    path: '/',
     component: Home,
     name: 'Home',
     meta: { middleware: [readSpace] },

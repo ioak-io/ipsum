@@ -80,6 +80,6 @@ export default {
   }
 }
 .edit-content-container {
-  padding: 6px;
+  // padding: 6px;
 }
 </style>

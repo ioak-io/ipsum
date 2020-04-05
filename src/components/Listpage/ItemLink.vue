@@ -21,6 +21,6 @@ export default {
 .item-link {
   padding: 10px;
   margin: 10px;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--color-primary-1);
 }
 </style>

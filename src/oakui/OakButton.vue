@@ -1,5 +1,5 @@
 <template>
-  <button class="oak-button" :class="style" @click="$emit('click')">
+  <button class="oak-button" :class="getStyle" @click="$emit('click')">
     {{ label }}
   </button>
 </template>
@@ -16,12 +16,7 @@ export default {
     small: Boolean,
     invert: Boolean,
   },
-  data() {
-    return {
-      style: this.getStyle(),
-    };
-  },
-  methods: {
+  computed: {
     getStyle() {
       let style = this.theme ? this.theme : '';
       style += this.variant ? ` ${this.variant}` : '';

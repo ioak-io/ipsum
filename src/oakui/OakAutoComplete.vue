@@ -5,7 +5,6 @@
         id="auto-complete"
         v-bind:label="label"
         @focus="onFocus"
-        @blur="onBlur"
         @change="$emit('search')"
       />
     </div>
@@ -50,13 +49,12 @@ export default {
     });
   },
   methods: {
-    onBlur() {
-      console.log('blur');
-      //   console.log(event.target);
-      //   this.isSearchOn = false;
-    },
+    // onBlur() {
+    //   console.log('blur');
+    //   console.log(event.target);
+    //   this.isSearchOn = false;
+    // },
     onFocus() {
-      console.log('focus');
       this.isSearchOn = true;
     },
     selected(key) {
@@ -70,15 +68,15 @@ export default {
 .oak-auto-complete {
   position: relative;
   .results {
-    position: absolute;
+    position: fixed;
     z-index: 1;
-    margin-top: -20px;
+    // margin-top: -20px;
     padding: 8px 0px;
     background-color: var(--color-background-5);
     box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15),
       0 5px 20px 0 rgba(21, 27, 38, 0.08);
-    cursor: default;
     .element {
+      cursor: pointer;
       padding: 0px 20px;
       height: 40px;
       line-height: 40px;

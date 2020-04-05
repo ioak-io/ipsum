@@ -4,16 +4,17 @@
   input,
   textarea {
     font-family: 'Open Sans', sans-serif;
-    border-radius: 3px;
+    border-radius: 4px;
     width: 100%;
     color: var(--color-foreground-1);
-    font-size: var(--metric-typography-5);
+    font-size: var(--metric-typography-4);
     outline: none;
-    border: none;
-    background-color: var(--color-background-5);
-    margin-bottom: 20px;
+    border: 1px solid var(--color-foreground-2);
+    background-color: var(--color-background-2);
+    // margin-bottom: 20px;
     box-sizing: border-box;
-    padding: 4px 5px; //10px 16px;
+
+    padding: 0px 10px; //10px 16px;
     // border: 2px solid;
     // border-color: var(--color-background-2);
 
@@ -43,5 +44,12 @@
     // overflow-y: auto;
     resize: none;
     // max-height: 500px;
+  }
+
+  input {
+    height: 40px;
+    @media (max-width: 767px) {
+      height: 30px;
+    }
   }
 }

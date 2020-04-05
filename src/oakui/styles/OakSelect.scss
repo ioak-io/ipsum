@@ -1,6 +1,6 @@
 .oak-select {
   user-select: none;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
   font-size: 14px;
   --color-bg: var(--color-background-3);
   --color-fg: var(--color-btn-palette-0-fg);
@@ -35,7 +35,7 @@
     background-color: var(--color-background-5);
     color: var(--color-foreground-1);
     padding: 4px 5px; //10px 16px;
-    width: 100%;
+    width: fit-content;
     box-sizing: border-box;
     overflow-x: hidden;
     text-overflow: ellipsis;
@@ -94,7 +94,7 @@
       overflow-y: auto;
       position: absolute;
       //   position: relative;
-      width: 100%;
+      width: fit-content;
       background-color: var(--color-background-5);
       box-shadow: 0 0 0 1px rgba(111, 119, 130, 0.15),
         0 5px 20px 0 rgba(21, 27, 38, 0.08);

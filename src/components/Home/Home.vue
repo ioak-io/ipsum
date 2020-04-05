@@ -18,7 +18,6 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  background-color: var(--color-background-1);
   min-height: 100vh;
 }
 </style>
