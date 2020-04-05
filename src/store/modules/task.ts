@@ -5,15 +5,16 @@ const state = {
 };
 
 const getters = {
-  getTasks: (state: any) => {
+  getSnippets: (state: any) => {
     return state.tasks;
   },
 };
 
 const actions = {
-  async fetchTasks({ commit }: { commit: any }) {
+  async fetchSnippets({ commit }: { commit: any }, count: number) {
     const response = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts'
+      `https://jsonplaceholder.typicode.com/posts?_limit=${count}`
+      // 'https://jsonplaceholder.typicode.com/posts'
     );
     commit('UPDATE_TASKS', response.data);
   },

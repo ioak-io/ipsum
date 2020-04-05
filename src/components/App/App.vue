@@ -3,6 +3,7 @@
     <AuthInit />
     <Notification />
     <Navigation />
+    <HomeContent />
     <router-view />
   </div>
 </template>
@@ -12,12 +13,14 @@ import { mapGetters } from 'vuex';
 import Notification from '@/components/Notification/Notification.vue';
 import AuthInit from '@/components/Auth/AuthInit.vue';
 import Navigation from '@/components/Navigation/Navigation.vue';
+import HomeContent from '@/components/Home/HomeContent.vue';
 export default {
   name: 'App',
   components: {
     Notification,
     AuthInit,
     Navigation,
+    HomeContent,
   },
   computed: {
     ...mapGetters(['getProfile']),
