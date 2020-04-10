@@ -21,8 +21,9 @@ const actions = {
     });
     sendMessage('spinner');
     const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts?_limit=${count}`
+      //`https://jsonplaceholder.typicode.com/posts?_limit=${count}`
       // 'https://jsonplaceholder.typicode.com/posts'
+      `http://localhost:4000/api/text/generate/en/paragraph?count=${count}`
     );
     sendMessage('spinner', false);
     sendMessage('notification', true, {
