@@ -46,9 +46,9 @@
   }
 
   .themecolor_4 {
-    --color-dark-primary-1: #ba9e4a;
-    --color-dark-primary-2: #887336;
-    --color-dark-secondary-1: #009fb7;
+    --color-dark-primary-1: #5288a3; //#435c73;
+    --color-dark-primary-2: #3d5469;
+    --color-dark-secondary-1: #03a696;
     --color-dark-secondary-2: #0091a7;
     --color-dark-tertiary-1: #0091a7;
     --color-dark-tertiary-1-trans: rgba(30, 136, 97, 0.1);
@@ -71,7 +71,7 @@
     --color-background-transparent-8: rgba(0, 0, 0, 0.8);
     --color-background-transparent-9: rgba(0, 0, 0, 0.9);
     --color-background-1: #121212;
-    --color-background-2: #242c36;
+    --color-background-2: #302b2f;
     --color-background-3: #272727;
     --color-background-4: #2e2e2e;
     --color-background-5: #353535;
@@ -80,6 +80,9 @@
     --color-foreground-3: rgba(255, 255, 255, 0.7);
     --color-foreground-4: rgba(255, 255, 255, 0.6);
     --color-foreground-5: rgba(255, 255, 255, 0.5);
+    --color-overlay-home: rgb(18, 18, 18, 0.3);
+    --color-overlay-others: rgb(115, 92, 64, 0.65);
+    --color-overlay-others: rgb(102, 94, 71, 0.65);
     --color-primary-1: var(--color-dark-primary-1);
     --color-primary-2: var(--color-dark-primary-2);
     --color-secondary-1: var(--color-dark-secondary-1);
@@ -151,6 +154,7 @@
     --color-foreground-3: rgba(0, 0, 0, 0.7);
     --color-foreground-4: rgba(0, 0, 0, 0.6);
     --color-foreground-5: rgba(0, 0, 0, 0.5);
+    --color-overlay: rgb(202, 202, 202, 0.92);
     --color-primary-1: var(--color-light-primary-1);
     --color-primary-2: var(--color-light-primary-2);
     --color-secondary-1: var(--color-light-secondary-1);

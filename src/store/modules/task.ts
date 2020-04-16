@@ -32,7 +32,10 @@ const actions = {
       message: 'Text generated',
       duration: 3000,
     });
-    commit('UPDATE_TASKS', response.data);
+    commit('UPDATE_TASKS', response.data.data);
+  },
+  removeSnippet({ commit }: any, index: number) {
+    console.log(index);
   },
 };
 

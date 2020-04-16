@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/components/Home/Home.vue';
+import Generate from '@/components/Generate/Generate.vue';
 
 import { middlewarePipeline, readSpace } from './middleware';
 
@@ -11,6 +12,12 @@ const routes = [
     path: '/home',
     component: Home,
     name: 'Home',
+    meta: { middleware: [readSpace] },
+  },
+  {
+    path: '/generate',
+    component: Generate,
+    name: 'Generate',
     meta: { middleware: [readSpace] },
   },
   {

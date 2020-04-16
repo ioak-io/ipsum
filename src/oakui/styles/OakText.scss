@@ -3,14 +3,14 @@
 
   input,
   textarea {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     border-radius: 4px;
     width: 100%;
     color: var(--color-foreground-1);
     font-size: var(--metric-typography-4);
     outline: none;
-    border: 1px solid var(--color-foreground-2);
-    background-color: var(--color-background-2);
+    border: none;
+    background-color: var(--color-background-1);
     // margin-bottom: 20px;
     box-sizing: border-box;
 

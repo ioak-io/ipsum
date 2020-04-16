@@ -9,9 +9,7 @@ export default {
     ...mapGetters(['getProfile']),
   },
   created() {
-    const fromCookies = this.$cookies.get(
-      `appnamehere_${this.getProfile.space}`
-    );
+    const fromCookies = this.$cookies.get(`ipsum_${this.getProfile.space}`);
     if (fromCookies) {
       this.addAuth({ auth: fromCookies });
     }

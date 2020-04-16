@@ -18,7 +18,7 @@ const actions = {
     commit('UPDATE_PROFILE', { ...state, space });
   },
   addAuth({ commit }: any, { auth, cookies }: any) {
-    cookies?.set(`appnamehere_${state.space}`, {
+    cookies?.set(`ipsum_${state.space}`, {
       isAuth: true,
       token: auth.token,
       secret: auth.secret,
@@ -28,7 +28,7 @@ const actions = {
     commit('UPDATE_PROFILE', { ...state, auth: auth });
   },
   removeAuth({ commit }: any, cookies: any) {
-    cookies.remove(`appnamehere_${state.space}`);
+    cookies.remove(`ipsum_${state.space}`);
     commit('UPDATE_PROFILE', { ...state, auth: {} });
   },
 };

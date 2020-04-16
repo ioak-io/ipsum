@@ -2,10 +2,10 @@
   <img
     v-if="getProfile.darkmode"
     class="logo"
-    v-bind:src="darkLogo"
+    v-bind:src="whiteLogo"
     alt="ipsum logo"
   />
-  <img v-else class="logo" v-bind:src="lightLogo" alt="ipsum logo" />
+  <img v-else class="logo" v-bind:src="blackLogo" alt="ipsum logo" />
 </template>
 <script>
 import { mapGetters } from 'vuex';
@@ -13,8 +13,8 @@ export default {
   name: 'Logo',
   data: function() {
     return {
-      darkLogo: require('@/assets/ipsum_dark.svg'),
-      lightLogo: require('@/assets/ipsum_light.svg'),
+      blackLogo: require('@/assets/ipsum_black.svg'),
+      whiteLogo: require('@/assets/ipsum_white.svg'),
     };
   },
   computed: {
