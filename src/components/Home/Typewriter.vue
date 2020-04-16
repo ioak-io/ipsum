@@ -15,6 +15,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .typewriter {
+  user-select: none;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: 0.15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
