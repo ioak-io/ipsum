@@ -42,11 +42,16 @@ export default {
       color: white;
       text-transform: uppercase;
       margin: 0px 5px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: var(--color-foreground-1);
       &:hover {
-        color: var(--color-foreground-2);
+        background-color: var(--color-background-transparent-1);
       }
       &.router-link-active {
-        color: var(--color-primary-1);
+        // color: var(--color-primary-1);
+        background-color: var(--color-background-transparent-4);
       }
     }
   }

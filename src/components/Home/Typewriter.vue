@@ -17,7 +17,7 @@ export default {
 .typewriter {
   user-select: none;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.15em solid orange; /* The typwriter cursor */
+  border-right: 0.15em solid #db9e36; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: 0.15em; /* Adjust as needed */
@@ -46,7 +46,7 @@ export default {
     border-color: transparent;
   }
   50% {
-    border-color: #db9e36;
+    border-color: var(--color-primary-1); // #06BF69
   }
 }
 </style>

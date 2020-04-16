@@ -41,12 +41,13 @@ button {
     }
 
     &.tertiary {
-      --color-bg: var(--color-btn-bg-tertiary);
-      --color-fg: var(--color-btn-fg-tertiary);
+      --color-bg: var(--color-btn-tertiary-bg);
+      --color-bg-hover: var(--color-btn-tertiary-bg-hover);
+      --color-fg: var(--color-btn-tertiary-fg);
       --color-fg-hover: var(--color-btn-fg-tertiary-hover);
       &.invert {
-        --color-fg-hover: var(--color-btn-fg-tertiary);
-        --color-fg: var(--color-btn-fg-tertiary-hover);
+        --color-fg-hover: var(--color-btn-tertiary-fg);
+        --color-fg: var(--color-btn-tertiary-fg-hover);
       }
     }
 

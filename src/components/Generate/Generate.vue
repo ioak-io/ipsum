@@ -2,7 +2,7 @@
   <div class="generate">
     <div class="overlay">
       <div class="header">
-        <Logo />
+        <Logo clickable />
         <Navigation />
       </div>
       <div class="content">

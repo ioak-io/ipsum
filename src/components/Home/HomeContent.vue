@@ -8,7 +8,7 @@
     </div>
     <div>
       <OakButton
-        theme="primary"
+        theme="tertiary"
         variant="animate none"
         label="Start generating"
         @click="startGenerating"

@@ -49,7 +49,7 @@ export default {
     grid-template-rows: auto 1fr;
     .header {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       padding: 20px;
       align-items: center;
     }
