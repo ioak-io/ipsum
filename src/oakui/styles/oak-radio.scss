@@ -1,0 +1,55 @@
+.oak-radio {
+  --ocb-theme-bg: var(--color-default);
+  --ocb-variant-radius: 50%;
+
+  &.primary {
+    --ocb-theme-bg: var(--color-primary-1);
+  }
+
+  &.secondary {
+    --ocb-theme-bg: var(--color-secondary-1);
+  }
+
+  &.tertiary {
+    --ocb-theme-bg: var(--color-tertiary-1);
+  }
+
+  &.default {
+    --ocb-theme-bg: var(--color-default);
+  }
+
+  display: flex;
+  align-items: center;
+
+  .checked,
+  .unchecked {
+    user-select: none;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--color-foreground-1);
+    border-radius: var(--ocb-variant-radius);
+    line-height: 20px;
+  }
+  .checked {
+    .decorator {
+      height: 10px;
+      width: 10px;
+      margin: 5px 0 0 5px;
+      border-radius: var(--ocb-variant-radius);
+      background-color: var(--ocb-theme-bg);
+    }
+  }
+
+  display: grid;
+  grid-template-rows: auto;
+  row-gap: 16px;
+  .radio-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .label {
+    padding-left: 10px;
+  }
+}

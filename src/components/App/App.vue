@@ -82,6 +82,14 @@ body {
     // }
   }
 }
+
+.icon-link {
+  user-select: none;
+  cursor: pointer;
+  &:hover {
+    color: var(--color-primary-1);
+  }
+}
 // body {
 //   width: 100%;
 //   margin: auto;

@@ -1,5 +1,5 @@
 <template>
-  <OakTab v-bind:meta="tabs" class="generate-content-container">
+  <OakTab v-bind:meta="staticData.tabs" class="generate-content-container">
     <div slot="main">
       <div class="generate-content">
         <div class="input-container">
@@ -28,39 +28,14 @@
           />
         </div>
         <div class="output-container">
-          <div class="snippets-container">
-            <div
-              v-for="(snippet, index) in getSnippets"
-              v-bind:key="snippet.id"
-              class="snippet-container"
-            >
-              <div class="snippet typography-7">{{ snippet.text }}</div>
-              <div class="snippet-action">
-                <div class="copy-icon">
-                  <i
-                    class="material-icons icon-link"
-                    @click="copyToClipboard(index)"
-                    >file_copy</i
-                  >
-                </div>
-                <!-- <div class="copy-icon">
-              <i
-                class="material-icons icon-link"
-                @click="copyToClipboardAndClose(index)"
-                >clear_all</i
-              >
-            </div> -->
-              </div>
-            </div>
+          <div v-for="snippet in getSnippets" v-bind:key="snippet.id">
+            <Snippet v-bind:snippet="snippet" />
           </div>
         </div>
       </div>
     </div>
-    <div slot="language">
-      language
-    </div>
     <div slot="settings">
-      settings
+      <Settings @change="changeSettings" v-bind:data="settings" />
     </div>
   </OakTab>
 </template>
@@ -73,6 +48,8 @@ import Vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 import { sendMessage } from '@/events/MessageService';
 import OakTab from '@/oakui/OakTab.vue';
+import Snippet from './Snippet.vue';
+import Settings from './Settings.vue';
 
 Vue.use(Clipboard);
 export default {
@@ -81,6 +58,8 @@ export default {
     OakText,
     OakButton,
     OakTab,
+    Snippet,
+    Settings,
   },
   data: function() {
     return {
@@ -92,11 +71,17 @@ export default {
         snippets: [{}],
         generatedtext: '',
       },
-      tabs: [
-        { slotName: 'main', icon: 'text_fields', label: 'Generate Text' },
-        { slotName: 'language', icon: 'language', label: 'Language' },
-        { slotName: 'settings', icon: 'settings', label: 'Settings' },
-      ],
+      settings: {
+        language: 'en',
+        type: 'lorem',
+        unit: 'sentence',
+      },
+      staticData: {
+        tabs: [
+          { slotName: 'main', icon: 'text_fields', label: 'Generate Text' },
+          { slotName: 'settings', icon: 'settings', label: 'Settings' },
+        ],
+      },
     };
   },
   computed: { ...mapGetters(['getSnippets']) },
@@ -104,7 +89,7 @@ export default {
     this.generatetext();
   },
   methods: {
-    ...mapActions(['fetchSnippets', 'removeSnippet']),
+    ...mapActions(['fetchSnippets']),
     addCount: function() {
       this.data.count++;
       this.data.dirty = true;
@@ -112,18 +97,6 @@ export default {
     reduceCount: function() {
       this.data.count--;
       this.data.dirty = true;
-    },
-    copyToClipboard: function(index) {
-      /*this.$clipboard(this.data.generatedtext)*/
-      this.$clipboard(this.getSnippets[index].text);
-      sendMessage('notification', true, {
-        type: 'success',
-        message: 'Copied to clipboard',
-      });
-    },
-    copyToClipboardAndClose: function(index) {
-      this.copyToClipboard(index);
-      this.removeSnippet(index);
     },
     copyAllContent: function() {
       this.data.generatedtext = '';
@@ -135,6 +108,9 @@ export default {
     handleChange: function() {
       this.data[event.target.name] = event.target.value;
       this.data.dirty = true;
+    },
+    changeSettings: function(attribute, value) {
+      this.settings[attribute] = value;
     },
     generatetext: function() {
       this.fetchSnippets(this.data.count);
@@ -176,50 +152,9 @@ export default {
       }
     }
     .output-container {
-      .snippets-container {
-        display: grid;
-        grid-template-rows: auto;
-        row-gap: 40px;
-        .snippet-container {
-          background-color: var(--color-background-2);
-          border-radius: 4px;
-          padding: 20px;
-          box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-            0px 4px 5px 0px rgba(0, 0, 0, 0.14),
-            0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-          display: grid;
-          grid-template-columns: 1fr auto;
-          column-gap: 10px;
-          justify-content: space-between;
-          .copy-icon {
-            opacity: 0.2;
-            transition: 1000ms cubic-bezier(0.5, 1.6, 0.4, 0.7);
-            &:hover {
-              opacity: 1;
-            }
-          }
-          .snippet {
-            font-size: 16px;
-            line-height: 1.4em;
-            display: inline;
-            &:hover + div {
-              opacity: 1;
-            }
-          }
-          .snippet-action {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-          }
-        }
-      }
-    }
-    .icon-link {
-      user-select: none;
-      cursor: pointer;
-      &:hover {
-        color: var(--color-primary-1);
-      }
+      display: grid;
+      grid-template-rows: auto;
+      row-gap: 40px;
     }
   }
 }
