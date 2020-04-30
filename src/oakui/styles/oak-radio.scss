@@ -1,4 +1,5 @@
 .oak-radio {
+  user-select: none;
   --ocb-theme-bg: var(--color-default);
   --ocb-variant-radius: 50%;
 
@@ -45,11 +46,17 @@
   grid-template-rows: auto;
   row-gap: 16px;
   .radio-item {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 
   .label {
     padding-left: 10px;
+    .caption {
+      font-size: 0.9em;
+      color: var(--color-foreground-3);
+    }
   }
 }

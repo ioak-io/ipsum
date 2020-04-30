@@ -26,9 +26,9 @@ export default {
     return {
       messages: [
         'Lorem ipsum dolor sit amet',
-        'Sed pellentesque laoreet velit nec interdum',
-        'Duis tortor ipsum, viverra ut eros vitae',
-        'Nam ullamcorper vestibulum enim, at dictum justo',
+        "Quoi colérique une d'outre c'était cet vestphalien",
+        "Étendu les c'était s'ouvrit fraîcheur hébreu s'écriatelle",
+        'தர்மத்தில் வேண்டும் வேகம் அன்பு உண்டு',
       ],
     };
   },

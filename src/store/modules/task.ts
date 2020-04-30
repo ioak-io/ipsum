@@ -12,7 +12,15 @@ const getters = {
 };
 
 const actions = {
-  async fetchSnippets({ commit }: { commit: any }, count: number) {
+  async fetchSnippets(
+    { commit }: { commit: any },
+    {
+      language,
+      unit,
+      count,
+      strategy,
+    }: { language: string; unit: string; count: number; strategy: string }
+  ) {
     const messageId = newMessageId();
     sendMessage('notification', true, {
       id: messageId,
@@ -23,7 +31,7 @@ const actions = {
     const response = await axios.get(
       //`https://jsonplaceholder.typicode.com/posts?_limit=${count}`
       // 'https://jsonplaceholder.typicode.com/posts'
-      `http://localhost:4000/api/text/generate/en/paragraph?count=${count}`
+      `http://localhost:4000/api/text/generate/${language}/${unit}?count=${count}&strategy=${strategy}`
     );
     sendMessage('spinner', false);
     sendMessage('notification', true, {

@@ -47,11 +47,11 @@ export default {
       font-size: 14px;
       color: var(--color-foreground-1);
       &:hover {
-        background-color: var(--color-background-transparent-1);
+        background-color: var(--color-background-2);
       }
       &.router-link-active {
         // color: var(--color-primary-1);
-        background-color: var(--color-background-transparent-4);
+        background-color: var(--color-background-4);
       }
     }
   }

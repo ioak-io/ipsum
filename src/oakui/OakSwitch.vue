@@ -1,22 +1,19 @@
 <template>
-  <div class="oak-radio" v-bind:class="style">
-    <div v-for="item in objects" v-bind:key="item.key" class="radio-item">
-      <div
-        v-bind:class="item.key === data ? 'checked' : 'unchecked'"
-        @click="handleChange(item.key)"
-      >
-        <div class="decorator" />
-      </div>
-      <div class="label">
-        <div>{{ item.value }}</div>
-        <div class="caption">{{ item.caption }}</div>
-      </div>
+  <div class="oak-switch" v-bind:class="style">
+    <div
+      v-for="item in objects"
+      v-bind:key="item.key"
+      class="radio-item"
+      v-bind:class="item.key === data ? 'selected' : 'unchecked'"
+      @click="handleChange(item.key)"
+    >
+      {{ item.value }}
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'OakRadio',
+  name: 'OakSwitch',
   props: {
     data: String,
     labelPosition: String,
@@ -40,5 +37,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import './styles/oak-radio.scss';
+@import './styles/oak-switch.scss';
 </style>

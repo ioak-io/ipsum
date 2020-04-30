@@ -35,7 +35,9 @@
       </div>
     </div>
     <div slot="settings">
-      <Settings @change="changeSettings" v-bind:data="settings" />
+      <div class="settings-content">
+        <Settings @change="changeSettings" v-bind:data="settings" />
+      </div>
     </div>
   </OakTab>
 </template>
@@ -73,7 +75,7 @@ export default {
       },
       settings: {
         language: 'en',
-        type: 'lorem',
+        strategy: 'lorem',
         unit: 'sentence',
       },
       staticData: {
@@ -91,12 +93,18 @@ export default {
   methods: {
     ...mapActions(['fetchSnippets']),
     addCount: function() {
-      this.data.count++;
-      this.data.dirty = true;
+      if (this.data.count < 1) {
+        this.data.count = 1;
+      } else {
+        this.data.count++;
+        this.data.dirty = true;
+      }
     },
     reduceCount: function() {
-      this.data.count--;
-      this.data.dirty = true;
+      if (this.data.count > 1) {
+        this.data.count--;
+        this.data.dirty = true;
+      }
     },
     copyAllContent: function() {
       this.data.generatedtext = '';
@@ -113,7 +121,12 @@ export default {
       this.settings[attribute] = value;
     },
     generatetext: function() {
-      this.fetchSnippets(this.data.count);
+      this.fetchSnippets({
+        unit: this.settings.unit,
+        language: this.settings.language,
+        strategy: this.settings.strategy,
+        count: this.data.count,
+      });
       this.data.generatedtext = '';
       for (let i = 0; i < this.data.count; i++) {
         this.data.generatedtext =
@@ -135,7 +148,6 @@ export default {
     width: 90vw;
   }
   .generate-content {
-    padding: 40px 0;
     // padding: 100px;
     // white-space: pre-wrap;
     display: grid;
@@ -156,6 +168,10 @@ export default {
       grid-template-rows: auto;
       row-gap: 40px;
     }
+  }
+  .generate-content,
+  .settings-content {
+    padding: 40px 0;
   }
 }
 </style>
