@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { sendMessage, newMessageId } from '@/events/MessageService';
 
+const baseUrl = process.env.VUE_APP_ROOT_API;
+
 const state = {
   tasks: [],
 };
@@ -31,7 +33,7 @@ const actions = {
     const response = await axios.get(
       //`https://jsonplaceholder.typicode.com/posts?_limit=${count}`
       // 'https://jsonplaceholder.typicode.com/posts'
-      `http://localhost:4000/api/text/generate/${language}/${unit}?count=${count}&strategy=${strategy}`
+      `${process.env.VUE_APP_ROOT_API}/api/text/generate/${language}/${unit}?count=${count}&strategy=${strategy}`
     );
     sendMessage('spinner', false);
     sendMessage('notification', true, {
@@ -43,7 +45,7 @@ const actions = {
     commit('UPDATE_TASKS', response.data.data);
   },
   removeSnippet({ commit }: any, index: number) {
-    console.log(index);
+    // console.log(index);
   },
 };
 
