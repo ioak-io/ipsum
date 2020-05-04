@@ -4,12 +4,12 @@ import { sendMessage, newMessageId } from '@/events/MessageService';
 const baseUrl = process.env.VUE_APP_ROOT_API;
 
 const state = {
-  tasks: [],
+  texts: [],
 };
 
 const getters = {
   getSnippets: (state: any) => {
-    return state.tasks;
+    return state.texts;
   },
 };
 
@@ -33,7 +33,7 @@ const actions = {
     const response = await axios.get(
       //`https://jsonplaceholder.typicode.com/posts?_limit=${count}`
       // 'https://jsonplaceholder.typicode.com/posts'
-      `${process.env.VUE_APP_ROOT_API}/api/text/generate/${language}/${unit}?count=${count}&strategy=${strategy}`
+      `${baseUrl}/api/text/generate/${language}/${unit}?count=${count}&strategy=${strategy}`
     );
     sendMessage('spinner', false);
     sendMessage('notification', true, {
@@ -42,7 +42,7 @@ const actions = {
       message: 'Text generated',
       duration: 3000,
     });
-    commit('UPDATE_TASKS', response.data.data);
+    commit('UPDATE_TEXTS', response.data.data);
   },
   removeSnippet({ commit }: any, index: number) {
     // console.log(index);
@@ -50,8 +50,8 @@ const actions = {
 };
 
 const mutations = {
-  UPDATE_TASKS: (state: any, tasks: any) => {
-    state.tasks = tasks;
+  UPDATE_TEXTS: (state: any, texts: any) => {
+    state.texts = texts;
   },
 };
 

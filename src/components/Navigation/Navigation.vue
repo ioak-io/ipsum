@@ -4,7 +4,7 @@
       <i class="material-icons" @click="toggleDarkmode">brightness_medium</i>
     </div> -->
     <div class="links">
-      <router-link v-bind:to="`/home`">
+      <!-- <router-link v-bind:to="`/home`">
         Home
       </router-link>
       <router-link v-bind:to="`/generate`">
@@ -12,7 +12,7 @@
       </router-link>
       <router-link v-bind:to="`/about`">
         About
-      </router-link>
+      </router-link> -->
     </div>
   </div>
 </template>

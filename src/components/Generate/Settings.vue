@@ -103,6 +103,22 @@ export default {
               value: 'Meaningful sentence (not supported)',
             },
           ],
+          ru: [
+            {
+              key: 'lorem',
+              value: 'Lorem ipsum',
+              caption:
+                'основанный на, Война и мир Льва Толстого. Том 3 Часть 1',
+            },
+            {
+              key: 'random',
+              value: 'случайные алфавиты',
+            },
+            {
+              key: 'nlg',
+              value: 'Meaningful sentence (not supported)',
+            },
+          ],
           ta: [
             {
               key: 'lorem',
@@ -146,6 +162,10 @@ export default {
           {
             key: 'es',
             value: 'Spanish',
+          },
+          {
+            key: 'ru',
+            value: 'Russian',
           },
           {
             key: 'ta',

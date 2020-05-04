@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import profile from '../store/modules/profile';
-import task from '../store/modules/task';
+import text from './modules/text';
 
 Vue.use(Vuex);
 
@@ -9,5 +9,5 @@ export default new Vuex.Store({
   state: {},
   mutations: {},
   actions: {},
-  modules: { profile, task },
+  modules: { profile, text },
 });
