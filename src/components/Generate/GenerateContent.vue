@@ -8,6 +8,7 @@
             <OakText
               v-bind:data="data.count"
               id="count"
+              type="number"
               @change="handleChange"
             />
           </div>

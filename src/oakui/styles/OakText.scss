@@ -1,6 +1,16 @@
 .oak-text-field {
   // width: 100%;
 
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
   input,
   textarea {
     font-family: Arial, Helvetica, sans-serif;
