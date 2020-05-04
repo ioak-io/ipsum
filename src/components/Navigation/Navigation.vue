@@ -1,8 +1,8 @@
 <template>
   <div class="navigation">
-    <!-- <div class="darkmode">
+    <div class="darkmode">
       <i class="material-icons" @click="toggleDarkmode">brightness_medium</i>
-    </div> -->
+    </div>
     <div class="links">
       <!-- <router-link v-bind:to="`/home`">
         Home
@@ -32,11 +32,17 @@ export default {
 <style scoped lang="scss">
 @import './style.scss';
 .navigation {
+  user-select: none;
   display: flex;
   align-items: center;
+  .darkmode {
+    .material-icons {
+      cursor: pointer;
+    }
+  }
   .links {
     font-family: Arial, Helvetica, sans-serif;
-    margin-right: 60px;
+    // margin-right: 60px;
     a {
       text-decoration: none;
       color: white;

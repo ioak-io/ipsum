@@ -53,8 +53,8 @@
     --color-dark-tertiary-1: #8c8736;
     --color-dark-tertiary-2: #736f2d;
     --color-dark-tertiary-1-trans: rgba(30, 136, 97, 0.1);
-    --color-light-primary-1: #887336;
-    --color-light-primary-2: #ba9e4a;
+    --color-light-primary-1: #ba9e4a;
+    --color-light-primary-2: #887336;
     --color-light-secondary-1: #0091a7;
     --color-light-secondary-2: #009fb7;
     --color-light-tertiary-1: #82d9b0;
@@ -160,6 +160,8 @@
     --color-foreground-4: rgba(0, 0, 0, 0.6);
     --color-foreground-5: rgba(0, 0, 0, 0.5);
     --color-overlay: rgb(202, 202, 202, 0.92);
+    // --color-overlay-others: rgb(202, 202, 202, 0.9);
+    --color-overlay-others: rgba(252, 252, 252, 0.95);
     --color-primary-1: var(--color-light-primary-1);
     --color-primary-2: var(--color-light-primary-2);
     --color-secondary-1: var(--color-light-secondary-1);

@@ -76,7 +76,7 @@ export default {
       settings: {
         language: 'en',
         strategy: 'lorem',
-        unit: 'sentence',
+        unit: 'paragraph',
       },
       staticData: {
         tabs: [
