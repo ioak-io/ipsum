@@ -1,5 +1,26 @@
 <template>
   <OakTab v-bind:meta="staticData.tabs" class="generate-content-container">
+    <div slot="burst">
+      <div class="generate-content">
+        <div class="typography-8">
+          Fresh new text always. The text keeps metamorphosing as you copy
+        </div>
+        <div class="output-container">
+          <div v-if="getSentences.length > 0">
+            <Snippet
+              v-bind:snippet="getSentences[0]"
+              @copied="removeBurstText('sentence')"
+            />
+          </div>
+          <div v-if="getParagraphs.length > 0">
+            <Snippet
+              v-bind:snippet="getParagraphs[0]"
+              @copied="removeBurstText('paragraph')"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
     <div slot="main">
       <div class="generate-content">
         <div class="input-container">
@@ -81,18 +102,19 @@ export default {
       },
       staticData: {
         tabs: [
-          { slotName: 'main', icon: 'text_fields', label: 'Generate Text' },
+          { slotName: 'burst', icon: 'text_fields', label: 'Burst mode' },
+          { slotName: 'main', icon: 'text_fields', label: 'Bulk mode' },
           { slotName: 'settings', icon: 'settings', label: 'Settings' },
         ],
       },
     };
   },
-  computed: { ...mapGetters(['getSnippets']) },
+  computed: { ...mapGetters(['getSnippets', 'getSentences', 'getParagraphs']) },
   mounted() {
     this.generatetext();
   },
   methods: {
-    ...mapActions(['fetchSnippets']),
+    ...mapActions(['fetchSnippets', 'preload', 'removeText']),
     addCount: function() {
       if (this.data.count < 1) {
         this.data.count = 1;
@@ -135,6 +157,24 @@ export default {
         this.data.snippets.push({ text: this.data.loremipsum });
       }
       this.data.dirty = false;
+
+      this.preload({
+        unit: 'sentence',
+        language: this.settings.language,
+        strategy: this.settings.strategy,
+      });
+      this.preload({
+        unit: 'paragraph',
+        language: this.settings.language,
+        strategy: this.settings.strategy,
+      });
+    },
+    removeBurstText: function(type) {
+      this.removeText({
+        unit: type,
+        language: this.settings.language,
+        strategy: this.settings.strategy,
+      });
     },
   },
 };

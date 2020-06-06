@@ -32,6 +32,7 @@ export default {
         type: 'success',
         message: 'Copied to clipboard',
       });
+      this.$emit('copied');
     },
   },
 };
