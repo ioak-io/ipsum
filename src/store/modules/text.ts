@@ -66,13 +66,11 @@ const actions = {
     if (unit === 'sentence') {
       commit('UPDATE_BURST_SENTENCE', state.burst.sentences.slice(1));
       if (state.burst.sentences.length < 6) {
-        console.log('preload sentences...');
         store.dispatch('preload', { language, unit, strategy });
       }
     } else {
       commit('UPDATE_BURST_PARAGRAPH', state.burst.paragraphs.slice(1));
       if (state.burst.paragraphs.length < 6) {
-        console.log('preload paragraphs...');
         store.dispatch('preload', { language, unit, strategy });
       }
     }
