@@ -45,7 +45,7 @@
     "husky": "^4.2.3",
     "ioak-sjcl": "^1.0.8-a",
     "lint-staged": "^9.5.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
     "travis": "^0.1.1",
