@@ -12,11 +12,11 @@ function Content({ cookies }: Props) {
     return (
         <div className="content basicui-light">
             <HashRouter>
-                <Navigation />
+                {/* <Navigation /> */}
                 <Routes>
-                    <Route index element={<Landing />} />
+                    <Route index element={<Home />} />
                     <Route path="landing" element={<Landing />} />
-                    <Route path="/" element={<Landing />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="home" element={<Home />} />
                     <Route path="*" element={<p>There's nothing here: 404!</p>} />
                 </Routes>

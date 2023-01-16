@@ -1,23 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.scss';
 import { Select, SelectPropsConverter } from 'basicui';
+import Generator from './Generator';
 
 interface Props {
 }
 const Home = (props: Props) => {
+  const [numberOfContainers, setNumberOfContainers] = useState(200);
   return (
     <div className="page-home">
-      <div className="app-container smooth-page page-home--title">
-        Secure identity and authentication provider
-      </div>
-      <Select options={SelectPropsConverter.optionsFromSimpleList(["another test data", "one more bulb test data"])} />
-      <div className="page-home--subtitle">
-        Oneauth handles user account setup, password management and
-        authentication needs of your organization. Connect all your
-        applications/assets with a single user account per user. Supports
-        sign-in with social identity providers such as Google, Outlook and
-        Facebook.
-      </div>
+      {[...Array(numberOfContainers)].map((index: number) => (
+        <Generator key={index} />
+      ))}
     </div>
   );
 };
