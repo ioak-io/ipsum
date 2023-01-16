@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.scss';
+import { Select, SelectPropsConverter } from 'basicui';
 
 interface Props {
 }
@@ -9,6 +10,7 @@ const Home = (props: Props) => {
       <div className="app-container smooth-page page-home--title">
         Secure identity and authentication provider
       </div>
+      <Select options={SelectPropsConverter.optionsFromSimpleList(["another test data", "one more bulb test data"])} />
       <div className="page-home--subtitle">
         Oneauth handles user account setup, password management and
         authentication needs of your organization. Connect all your

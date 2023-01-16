@@ -30,6 +30,7 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "babel-loader": "^9.1.0",
+    "basicui": "file:basicui-1.0.0.tgz",
     "css-loader": "^6.7.3",
     "dotenv": "^16.0.3",
     "file-loader": "^6.2.0",
