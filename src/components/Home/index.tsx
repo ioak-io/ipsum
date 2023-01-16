@@ -6,7 +6,7 @@ import Generator from './Generator';
 interface Props {
 }
 const Home = (props: Props) => {
-  const [numberOfContainers, setNumberOfContainers] = useState(200);
+  const [numberOfContainers, setNumberOfContainers] = useState(2);
   return (
     <div className="page-home">
       {[...Array(numberOfContainers)].map((index: number) => (
