@@ -9,9 +9,10 @@ const Home = (props: Props) => {
   const [numberOfContainers, setNumberOfContainers] = useState(2);
   return (
     <div className="page-home">
-      {[...Array(numberOfContainers)].map((index: number) => (
+      <div className='page-home__header'>Header</div>
+      <div className='page-home__body'>{[...Array(numberOfContainers)].map((index: number) => (
         <Generator key={index} />
-      ))}
+      ))}</div>
     </div>
   );
 };
