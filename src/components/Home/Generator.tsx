@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Generator.scss';
-import { Button, Input, Select, SelectPropsConverter } from 'basicui';
+import { Button, Input, Select, SelectPropsConverter, ThemeType } from 'basicui';
 
 interface Props {
 }
@@ -32,7 +32,7 @@ const Generator = (props: Props) => {
           </div>
         </div>
         <div className="generator__header__right">
-          <Button onClick={handleClick}>Copy</Button>
+          <Button onClick={handleClick} theme={ThemeType.primary}>Copy</Button>
         </div>
       </div>
       <div className="generator__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet condimentum elit. Aenean tempus consectetur ligula nec porttitor. Phasellus ultrices sed odio a porttitor. Nam suscipit tellus ante, vel gravida mauris auctor sed. Sed vel dui iaculis, ultricies nibh nec, euismod massa. Cras ut ipsum eget nisi commodo dignissim vitae nec mi. Cras vitae sapien commodo, consectetur mi ut, condimentum mauris.</div>

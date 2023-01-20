@@ -10,7 +10,7 @@ type Props = {
 
 function Content({ cookies }: Props) {
     return (
-        <div className="content basicui-light">
+        <div className="content basicui-dark">
             <HashRouter>
                 {/* <Navigation /> */}
                 <Routes>
