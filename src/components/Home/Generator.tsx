@@ -94,10 +94,10 @@ const Generator = (props: Props) => {
       <div className="generator__header">
         <div className="generator__header__left">
           <div className="generator__header__left__count">
-            <Input onInput={handleCountChange} initialValue={count} type="number" />
+            <Input onInput={handleCountChange} value={count} type="number" />
           </div>
           <div className="generator__header__left__type">
-            <Select initialValues={[type]} options={SelectPropsConverter.optionsFromSimpleList(["Sentence", "Paragraph"])} onInput={handleTypeChange} />
+            <Select value={[type]} options={SelectPropsConverter.optionsFromSimpleList(["Sentence", "Paragraph"])} onInput={handleTypeChange} />
           </div>
           {(type !== appliedType || count !== appliedCount) && <div>
             <Button onClick={handleApply} theme={ThemeType.primary}>Apply</Button>
