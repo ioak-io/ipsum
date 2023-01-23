@@ -14,16 +14,20 @@ const Generator = (props: Props) => {
   const [count, setCount] = useState(1);
   const [type, setType] = useState("Sentence");
 
-  const [appliedCount, setAppliedCount] = useState(1);
-  const [appliedType, setAppliedType] = useState("Sentence");
+  const [appliedData, setAppliedData] = useState<{ count: number, type: string, reset: boolean, changeFlag: boolean } | null>(null);
 
   const [data, setData] = useState<string[][]>([]);
   const dataRef = useRef<string[][]>([]);
 
   useEffect(() => {
+    console.log("---", appliedData);
+    if (appliedData) { reloadData(appliedData.reset); }
+  }, [appliedData]);
+
+  useEffect(() => {
     if (props.index > -1) {
       let _count = toNumber(getSessionValue(Constants.getCount(props.index), null));
-      
+
       if (!_count) {
         _count = 1;
         setSessionValue(Constants.getCount(props.index), _count);
@@ -33,14 +37,20 @@ const Generator = (props: Props) => {
         _type = props.index === 1 ? "Paragraph" : "Sentence";
         setSessionValue(Constants.getType(props.index), _type);
       }
-      console.log(props.index, _count, _type);
       setCount(_count);
       setType(_type);
-      setAppliedCount(_count);
-      setAppliedType(_type);
-      setTimeout(() => {
-        reloadData();
-      }, 100);
+      console.log("****", {
+        count: _count,
+        type: _type,
+        reset: false,
+        changeFlag: !appliedData?.changeFlag
+      });
+      setAppliedData({
+        count: _count,
+        type: _type,
+        reset: false,
+        changeFlag: !appliedData?.changeFlag
+      })
     }
   }, [props.index]);
 
@@ -65,20 +75,20 @@ const Generator = (props: Props) => {
     setData(_newData);
     dataRef.current = _newData;
     if (_newData.length < 5) {
-      reloadData();
+      reloadData(false);
     }
   }
 
   const handleApply = () => {
-    setAppliedCount(count);
-    setAppliedType(type);
-    reloadData(true);
+    setAppliedData({
+      count, type, reset: true, changeFlag: !appliedData?.changeFlag
+    })
     setSessionValue(Constants.getCount(props.index), count);
     setSessionValue(Constants.getType(props.index), type);
   }
 
   const reloadData = (reset: boolean = false) => {
-    httpGet(`/generate/english/lorem/${type}/${count}/10`, {}).then((response) => {
+    httpGet(`/generate/english/lorem/${appliedData?.type}/${appliedData?.count}/10`, {}).then((response) => {
       let _data: string[][] = [];
       if (!reset) {
         _data = [...dataRef.current];
@@ -99,7 +109,7 @@ const Generator = (props: Props) => {
           <div className="generator__header__left__type">
             <Select value={[type]} options={SelectPropsConverter.optionsFromSimpleList(["Sentence", "Paragraph"])} onInput={handleTypeChange} />
           </div>
-          {(type !== appliedType || count !== appliedCount) && <div>
+          {(type !== appliedData?.type || count !== appliedData?.count) && <div>
             <Button onClick={handleApply} theme={ThemeType.primary}>Apply</Button>
           </div>}
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Routes, Route, Link, BrowserRouter, HashRouter } from 'react-router-dom';
 import Home from '../Home';
 import Landing from '../Landing';
@@ -9,8 +10,11 @@ type Props = {
 }
 
 function Content({ cookies }: Props) {
+
+    const profile = useSelector((state: any) => state.profile);
+
     return (
-        <div className="content basicui-dark">
+        <div className={`content ${profile.theme === "theme_dark" ? "basicui-dark" : "basicui-light"}`}>
             <HashRouter>
                 {/* <Navigation /> */}
                 <Routes>
