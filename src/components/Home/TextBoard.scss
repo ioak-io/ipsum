@@ -1,0 +1,7 @@
+.text-board p {
+    margin: 0;
+}
+
+.text-board p:not(:last-of-type) {
+    margin-bottom: 12px;
+}

@@ -5,6 +5,8 @@ import { httpGet } from '../../utils/RestTemplate';
 import TextBoard from './TextBoard';
 import { getSessionValue, setSessionValue, toNumber } from '../../utils/SessionUtils';
 import * as Constants from './Constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   index: number;
@@ -114,7 +116,10 @@ const Generator = (props: Props) => {
           </div>}
         </div>
         <div className="generator__header__right">
-          <Button onClick={handleCopy} theme={ThemeType.primary}>Copy</Button>
+          <Button onClick={handleCopy} theme={ThemeType.primary}>
+            <FontAwesomeIcon icon={faClipboard} />
+            Copy
+          </Button>
         </div>
       </div>
       <div className="generator__body">{data.length > 0 ? <TextBoard data={data[0]} /> : ""}</div>
