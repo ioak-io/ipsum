@@ -19,12 +19,17 @@
 .writeup-light {
     --writeup-background-color: var(--theme-white-200);
 }
+
 .writeup-dark {
     --writeup-background-color: var(--theme-black-300);
 }
 
-.writeup-light table, .writeup-light table th, .writeup-light table td,
-.writeup-dark table, .writeup-dark table th, .writeup-dark table td {
+.writeup-light table,
+.writeup-light table th,
+.writeup-light table td,
+.writeup-dark table,
+.writeup-dark table th,
+.writeup-dark table td {
     border: none;
 }
 
@@ -32,4 +37,11 @@
     --basicui-formelement-font-weight: 300;
     --basicui-formelement-font-size: 1rem;
     --writeup-background-color: var(--basicui-formelement-background-color);
+}
+
+.basicui-dark {
+    .basicui-input {
+        background-color: var(--theme-primary-transparent-50);
+        border-color: var(--theme-primary-600);
+    }
 }

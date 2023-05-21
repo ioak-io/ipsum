@@ -7,6 +7,9 @@ import MobileSidebar from '../MobileSidebar';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../Logo';
+import { removeSessionValue } from '../../utils/SessionUtils';
+import { removeAuth } from '../../store/actions/AuthActions';
+import DarkModeIcon from '../Navigation/DarkModeIcon';
 
 interface Props {
   title: string;
@@ -29,43 +32,50 @@ const Topbar = (props: Props) => {
     setIsMobileSidebarOpen(false);
   }
 
-  const toggleSidebar = () => {
-    sessionStorage.setItem(
-      'ipsum_pref_sidebar_status',
-      profile.sidebar ? 'collapsed' : 'expanded'
-    );
 
-    dispatch(setProfile({ ...profile, sidebar: !profile.sidebar }));
+  const logout = (
+    event: any,
+    type = 'success',
+    message = 'You have been logged out'
+  ) => {
+    dispatch(removeAuth());
+    removeSessionValue(
+      `ipsum-access_token`
+    );
+    removeSessionValue(
+      `ipsum-refresh_token`
+    );
+    navigate(`/`);
   };
 
-  const openNewNotePage = () => {
-    navigate(`/${props.space}/new-note`);
-  }
+  const login = () => {
+    navigate('/login');
+  };
 
   return (
     <>
       <div className="topbar">
         <div className="topbar__left">
           <Logo />
-          <div className="topbar__left__menu">
+          {/* <div className="topbar__left__menu">
             <button className="topbar__left__menu__action">
               Generate
             </button>
             <button className="topbar__left__menu__action">
               Settings
             </button>
-          </div>
+          </div> */}
         </div>
         <div className="topbar__right">
-          {authorization.isAuth && <button className="topbar__right__icon-action">
+          <DarkModeIcon />
+          {authorization.isAuth && <button className="topbar__right__icon-action" onClick={logout}>
             <FontAwesomeIcon icon={faSignOut} />
           </button>}
-          {!authorization.isAuth && <button className="topbar__right__icon-action">
+          {!authorization.isAuth && <button className="topbar__right__icon-action" onClick={login}>
             <FontAwesomeIcon icon={faSignIn} />
           </button>}
         </div>
       </div>
-      <MobileSidebar isOpen={isMobileSidebarOpen} onClose={closeMobileSidebar} />
     </>
   );
 };
