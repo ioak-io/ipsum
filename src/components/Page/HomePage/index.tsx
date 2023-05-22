@@ -5,6 +5,7 @@ import Generator from './Generator';
 import { getSessionValue, setSessionValue, toNumber } from '../../../utils/SessionUtils';
 import * as Constants from './Constants';
 import Topbar from '../../../components/Topbar';
+import PageControls from './PageControls';
 
 interface Props {
 }
@@ -23,14 +24,17 @@ const HomePage = (props: Props) => {
   }, []);
 
   return (
-    <div className="page-home">
-    <Topbar title="Choose company" />
-      <div className='page-home__body'>
-        {[...Array(numberOfContainers)].map((_, index: number) =>
-          <Generator key={index} index={index} />
-        )}
+    <>
+      <div className="page-home">
+        <Topbar title="Choose company" />
+        <div className='page-home__body'>
+          {[...Array(numberOfContainers)].map((_, index: number) =>
+            <Generator key={index} index={index} />
+          )}
+        </div>
       </div>
-    </div>
+      <PageControls />
+    </>
   );
 };
 
