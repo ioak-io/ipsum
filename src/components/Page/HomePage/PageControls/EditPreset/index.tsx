@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
-import { Button, IconButton, Input, Textarea } from 'basicui';
+import { Button, IconButton, Input, SelectNative, Textarea, SelectPropsConverter } from 'basicui';
 import PresetType from 'src/components/Types/PresetType';
 
 interface Props {
@@ -27,6 +27,8 @@ const EditPreset = (props: Props) => {
   return (
     <div className="edit-preset">
       <Input name="name" value={props.preset.name} label='Preset name' onInput={handleChange} />
+      <SelectNative name="type" value={props.preset.type} label='Type' onInput={handleChange}
+        options={SelectPropsConverter.optionsFromSimpleList(["Word", "Sentence", "AI"])} />
       <Textarea name="corpus" value={props.preset.corpus} label='Corpus text' onInput={handleChange} />
     </div>
   );

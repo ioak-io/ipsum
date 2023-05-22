@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Header.scss';
 import { useNavigate } from 'react-router-dom';
 import { Button, IconButton } from 'basicui';
+import PresetType from 'src/components/Types/PresetType';
 
 interface Props {
+  activePreset?: PresetType;
   isBodyActive: boolean;
   toggleBody?: any;
   onAdd?: any;
@@ -23,7 +25,7 @@ const Header = (props: Props) => {
   return (
     <div className={`page-controls-header ${props.isBodyActive ? 'page-controls-header--body-active' : ''}`}>
       <div className="page-controls-header__left">
-        Preset: English
+        {props.activePreset?.name || "No preset applied"}
       </div>
       <div className="page-controls-header__right">
         {props.onAdd && <IconButton circle onClick={props.onAdd}>

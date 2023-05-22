@@ -1,7 +1,7 @@
 type PresetType = {
     _id?: string;
     name: string;
-    ai: boolean;
+    type: String;
     corpus: string;
 }
 

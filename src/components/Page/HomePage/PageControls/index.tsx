@@ -12,6 +12,8 @@ import ListPresets from './ListPresets';
 import EditPreset from './EditPreset';
 
 interface Props {
+  activePresetId?: string;
+  onApplyPreset: any;
 }
 
 const PageControls = (props: Props) => {
@@ -24,6 +26,7 @@ const PageControls = (props: Props) => {
   const [presetToEdit, setPresetToEdit] = useState<PresetType | undefined>();
   const [isActive, setIsActive] = useState(false);
   const [presets, setPresets] = useState<PresetType[]>([]);
+  const [activePreset, setActivePreset] = useState<PresetType | undefined>();
 
   useEffect(() => {
     if (authorization.isAuth) {
@@ -33,6 +36,10 @@ const PageControls = (props: Props) => {
     }
   }, [authorization]);
 
+  useEffect(() => {
+    setActivePreset(presets.find(item => item._id === props.activePresetId));
+  }, [props.activePresetId, presets]);
+
   const handleChange = (_preset: PresetType) => {
     setPresetToEdit({
       ..._preset
@@ -40,7 +47,7 @@ const PageControls = (props: Props) => {
   }
 
   const applyPreset = (presetId: string) => {
-    console.log("apply", presetId)
+    props.onApplyPreset(presetId);
   }
 
   const editPreset = (preset: PresetType) => {
@@ -65,7 +72,7 @@ const PageControls = (props: Props) => {
   const onAddPreset = () => {
     setPresetToEdit({
       name: '',
-      ai: false,
+      type: 'Word',
       corpus: ''
     });
     setView("edit");
@@ -76,6 +83,7 @@ const PageControls = (props: Props) => {
       <div className={`page-controls__body-wrapper ${isActive ? 'page-controls__body-wrapper--active' : ''}`}>
         <div className='page-controls__body'>
           {view === 'list' && <ListPresets
+            activePresetId={props.activePresetId}
             presets={presets}
             applyPreset={applyPreset}
             editPreset={editPreset}
@@ -87,7 +95,9 @@ const PageControls = (props: Props) => {
           />}
         </div>
       </div>
-      <Header isBodyActive={isActive}
+      <Header
+        activePreset={activePreset}
+        isBodyActive={isActive}
         toggleBody={view !== 'edit' && (() => setIsActive(!isActive))}
         onAdd={isActive && view === 'list' && (() => onAddPreset())}
         onSave={isActive && view === 'edit' && (() => onSavePreset())}

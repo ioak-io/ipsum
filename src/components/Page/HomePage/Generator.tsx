@@ -10,6 +10,7 @@ import { httpGet } from '../../../components/Lib/RestTemplate';
 
 interface Props {
   index: number;
+  presetId: string;
 }
 
 const Generator = (props: Props) => {
@@ -22,9 +23,12 @@ const Generator = (props: Props) => {
   const dataRef = useRef<string[][]>([]);
 
   useEffect(() => {
-    console.log("---", appliedData);
     if (appliedData) { reloadData(appliedData.reset); }
   }, [appliedData]);
+
+  useEffect(() => {
+    if (appliedData) { reloadData(true); }
+  }, [props.presetId]);
 
   useEffect(() => {
     if (props.index > -1) {
@@ -90,7 +94,7 @@ const Generator = (props: Props) => {
   }
 
   const reloadData = (reset: boolean = false) => {
-    httpGet(`/generate/english/lorem/${appliedData?.type}/${appliedData?.count}/10`, {}).then((response) => {
+    httpGet(`/generate/${props.presetId}/${appliedData?.type}/${appliedData?.count}/10`, {}).then((response) => {
       let _data: string[][] = [];
       if (!reset) {
         _data = [...dataRef.current];
