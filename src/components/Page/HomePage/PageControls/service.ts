@@ -6,7 +6,7 @@ export const getPreset = (
 ) => {
     return httpGet(`/preset`, {
         headers: {
-            Authorization: authorization.access_token,
+            Authorization: authorization?.access_token,
         },
     })
         .then((response) => {

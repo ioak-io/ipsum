@@ -38,3 +38,7 @@
 .list-presets__preset__right button:focus {
   border-color: var(--theme-primary-500);
 }
+
+.list-presets__preset__right button:disabled {
+  opacity: 0.25;
+}

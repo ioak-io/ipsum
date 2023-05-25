@@ -29,11 +29,9 @@ const PageControls = (props: Props) => {
   const [activePreset, setActivePreset] = useState<PresetType | undefined>();
 
   useEffect(() => {
-    if (authorization.isAuth) {
-      getPreset(authorization).then((response: PresetType[]) => {
-        setPresets(response);
-      })
-    }
+    getPreset(authorization).then((response: PresetType[]) => {
+      setPresets(response);
+    })
   }, [authorization]);
 
   useEffect(() => {

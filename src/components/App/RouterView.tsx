@@ -45,14 +45,14 @@ const RouterView = (props: Props) => {
           path="/"
           element={
             <ProtectedRouteApp
-              middleware={[]} component={HomePage} />
+              middleware={['readAuthentication']} component={HomePage} />
           }
         />
         <Route
           path="/home"
           element={
             <ProtectedRouteApp
-              middleware={['authenticate']} component={HomePage} />
+              middleware={['readAuthentication']} component={HomePage} />
           }
         />
         <Route
@@ -62,88 +62,10 @@ const RouterView = (props: Props) => {
               middleware={[]} component={LoginPage} />}
         />
         <Route
-          path="/company/edit"
-          element={
-            <ProtectedRouteApp
-              middleware={['authenticate']} component={EditCompanyPage} />}
-        />
-        <Route
-          path="/:space/unauthorized"
+          path="/unauthorized"
           element={
             <ProtectedRouteApp
               middleware={['isAuthenticated']} component={UnauthorizedPage} />}
-        />
-        <Route
-          path="/:space/home"
-          element={
-            <ProtectedRouteApp
-              middleware={['readAuthentication']} component={ExpensePage} />}
-        />
-        <Route
-          path="/:space/new-note"
-          element={
-            <ProtectedRouteApp
-              middleware={['readAuthentication']} component={NewNotePage} />}
-        />
-        <Route
-          path="/:space/note/:id"
-          element={
-            <ProtectedRouteApp
-              middleware={['readAuthentication']} component={NotePage} />}
-        />
-        <Route
-          path="/:space/browse"
-          element={
-            <ProtectedRouteApp
-              middleware={['readAuthentication']} component={BrowsePage} />}
-        />
-        <Route
-          path="/:space/graph"
-          element={
-            <ProtectedRouteApp
-              middleware={['readAuthentication']} component={GraphPage} />}
-        />
-        <Route
-          path="/:space/metadata-definition"
-          element={
-            <ProtectedRouteApp
-              middleware={['readAuthentication']} component={MetadataDefinitionPage} />}
-        />
-        <Route
-          path="/:space/color-filter"
-          element={
-            <ProtectedRouteApp
-              middleware={['readAuthentication']} component={ColorfilterPage} />}
-        />
-        <Route
-          path="/:space/color-filter/:id"
-          element={
-            <ProtectedRouteApp
-              middleware={['readAuthentication']} component={EditColorFilterPage} />}
-        />
-        <Route
-          path="/:space/stopwords"
-          element={
-            <ProtectedRouteApp
-              middleware={['readAuthentication']} component={StopwordsPage} />}
-        />
-        <Route
-          path="/:space/settings/company"
-          element={
-            <ProtectedRouteApp
-              middleware={['authenticate']} component={EditCompany} />}
-        />
-        <Route
-          path="/:space/settings/user"
-          element={
-            <ProtectedRouteApp
-              middleware={['authenticate']} component={Permissions} />}
-        />
-        <Route
-          path="/:space/settings/backup"
-          element={
-            <ProtectedRouteApp
-              middleware={['authenticate']} component={BackupAndRestore} />}
         />
       </Routes>
     </div>

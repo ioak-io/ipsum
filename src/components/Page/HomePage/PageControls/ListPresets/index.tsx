@@ -8,7 +8,7 @@ import { Button, IconButton } from 'basicui';
 import PresetType from 'src/components/Types/PresetType';
 
 interface Props {
-  activePresetId: string;
+  activePresetId?: string;
   presets: PresetType[];
   applyPreset: any;
   editPreset: any;
@@ -32,13 +32,13 @@ const ListPresets = (props: Props) => {
             </b>}
           </div>
           <div className='list-presets__preset__right'>
-            {props.activePresetId !== preset._id && <button onClick={() => props.applyPreset(preset._id)}>
+            <button disabled={props.activePresetId === preset._id} onClick={() => props.applyPreset(preset._id)}>
               <FontAwesomeIcon icon={faCheck} />
-            </button>}
-            <button onClick={() => props.editPreset(preset)}>
+            </button>
+            <button disabled={!preset.createdBy} onClick={() => props.editPreset(preset)}>
               <FontAwesomeIcon icon={faPenClip} />
             </button>
-            <button onClick={() => props.deletePreset(preset._id)}>
+            <button disabled={!preset.createdBy} onClick={() => props.deletePreset(preset._id)}>
               <FontAwesomeIcon icon={faTrashAlt} />
             </button>
           </div>
