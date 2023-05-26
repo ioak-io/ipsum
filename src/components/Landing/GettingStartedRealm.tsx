@@ -1,7 +1,6 @@
 import React from 'react';
 import './style.scss';
-import OakButton from '../../oakui/wc/OakButton';
-import OakTypography from '../../oakui/wc/OakTypography';
+import { Button } from 'basicui';
 
 interface Props {
   history: any;
@@ -9,28 +8,28 @@ interface Props {
 
 const GettingStartedRealm = (props: Props) => {
   const goToCreatePage = () => {
-    props.history.push('/asset/create');
+    props.history('/asset/create');
   };
   return (
     <div className="getting-started">
       <div>
-        <OakTypography variant="h2">Getting Started</OakTypography>
+        <h2>Getting Started</h2>
         <div className="getting-started--steps realm-top-2">
           <div className="typography-7">Create Realm</div>
           <div className="typography-4">
             An asset represents an application or product being supported.
             Create an asset to get started with the process of onboarding your
-            product into Oneauth.
+            product into Ipsum.
           </div>
-          <div className="typography-7">Set Oneauth URL in your product</div>
+          <div className="typography-7">Set Ipsum URL in your product</div>
           <div className="typography-4">
             To provide seemless experience to your users, add a link from your
-            product to Oneauth. By triggering a button for example from your
-            product, your users will be securely transferred to Oneauth with
+            product to Ipsum. By triggering a button for example from your
+            product, your users will be securely transferred to Ipsum with
             their details.
           </div>
           <div className="typography-7">
-            Securely transmit user information to Oneauth
+            Securely transmit user information to Ipsum
           </div>
           <div className="typography-4">
             When you redirect from your product, transmit the user information
@@ -40,13 +39,11 @@ const GettingStartedRealm = (props: Props) => {
         </div>
       </div>
       <div className="action-footer position-center">
-        <OakButton
-          theme="primary"
-          variant="disappear"
-          handleClick={goToCreatePage}
+        <Button
+          onClick={goToCreatePage}
         >
           Create a new realm
-        </OakButton>
+        </Button>
       </div>
     </div>
   );

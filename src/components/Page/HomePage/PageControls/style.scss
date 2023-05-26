@@ -1,0 +1,31 @@
+.page-controls {
+  position: fixed;
+  background-color: var(--theme-white-500);
+  bottom: 10px;
+  width: 450px;
+  max-width: 90vw;
+  border-radius: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid var(--theme-white-900);
+}
+
+.basicui-dark .page-controls {
+  background-color: var(--theme-black-100);
+  border-color: var(--theme-black-extended-700);
+}
+
+.page-controls__body-wrapper {
+  height: 0px;
+  overflow: hidden;
+  transition: height 250ms ease-in-out, max-height 250ms ease-in-out;
+}
+
+.page-controls__body-wrapper--active {
+  height: 300px;
+  overflow: auto;
+}
+
+.page-controls__body {
+  padding: 6px 12px;
+}

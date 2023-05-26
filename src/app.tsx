@@ -4,16 +4,13 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './oak-styles/index.scss';
-// import { CookiesProvider } from 'react-cookie';
+import './basicui-styles/index.scss';
 import App from './components/App';
-import './index.scss';
+// import './index.scss';
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  //   <CookiesProvider>
   <App />,
-  //   </CookiesProvider>,
   document.getElementById('root')
 );
 

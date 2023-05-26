@@ -1,0 +1,90 @@
+.topbar {
+  background-color: var(--theme-white-50);
+  height: var(--app-layout-topbar-height);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 10px;
+  // align-content: center;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--theme-white-600);
+}
+
+.basicui-dark .topbar {
+  border-color: var(--theme-black-extended-800);
+  background-color: var(--theme-black-100);
+}
+
+.topbar__left {
+  font-size: 28px;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: flex-start;
+  column-gap: 24px;
+  align-items: center;
+  font-size: 16px;
+  height: 100%;
+}
+
+.topbar__left__menu {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 12px;
+
+}
+
+.topbar__left__menu__action {
+  background-color: transparent;
+  border: 1px solid var(--theme-black-extended-700);
+  padding: 6px 12px;
+  // border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  transition: color 250ms ease-in-out, background-color 250ms ease-in-out, border-color 250ms ease-in-out;
+}
+
+
+.topbar__left__menu__action:hover,
+.topbar__left__menu__action:focus {
+  border-color: var(--theme-black-extended-400);
+}
+
+.topbar__right {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 20px;
+}
+
+.topbar__left button.topbar__left__nav {
+  font-size: 14px;
+  height: 100%;
+  padding: 0 12px;
+}
+
+.topbar__left button.topbar__left__nav:hover,
+.topbar__left button.topbar__left__nav:focus,
+.topbar__left button.topbar__left__nav:active {
+  background-color: var(--theme-white-400);
+}
+
+.basicui-dark {
+
+  .topbar__left button.topbar__left__nav:hover,
+  .topbar__left button.topbar__left__nav:focus,
+  .topbar__left button.topbar__left__nav:active {
+    background-color: var(--theme-black-50);
+  }
+}
+
+.topbar__right__icon-action {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
+}
+
+.topbar__right__icon-action:hover,
+.topbar__right__icon-action:focus {
+  color: var(--theme-primary-500);
+}

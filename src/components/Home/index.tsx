@@ -1,37 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { loginPageSubject } from '../../events/LoginPageEvent';
 import './style.scss';
-import { Select, SelectPropsConverter } from 'basicui';
-import Generator from './Generator';
-import { getSessionValue, setSessionValue, toNumber } from '../../utils/SessionUtils';
-import * as Constants from './Constants';
-import Logo from '../Logo';
-import DarkModeIcon from '../DarkModeIcon';
 
 interface Props {
 }
 const Home = (props: Props) => {
-  const [numberOfContainers, setNumberOfContainers] = useState(2);
-
   useEffect(() => {
-    let _numberOfContainers = toNumber(getSessionValue(Constants.IPSUM_NUMBER_OF_BLOCKS, null));
-    if (!_numberOfContainers) {
-      setSessionValue(Constants.IPSUM_NUMBER_OF_BLOCKS, 2);
-      _numberOfContainers = 2;
-    }
-
-    setNumberOfContainers(_numberOfContainers);
+    loginPageSubject.next({ state: false });
+    return () => {
+      loginPageSubject.next({ state: true });
+    };
   }, []);
-
   return (
     <div className="page-home">
-      <div className='page-home__header'>
-        <Logo variant='full' />
-        <DarkModeIcon />
+      <div className="app-container smooth-page page-home--title">
+        Secure identity and authentication provider
       </div>
-      <div className='page-home__body'>
-        {[...Array(numberOfContainers)].map((_, index: number) =>
-          <Generator key={index} index={index} />
-        )}
+      <div className="page-home--subtitle">
+        Ipsum handles user account setup, password management and
+        authentication needs of your organization. Connect all your
+        applications/assets with a single user account per user. Supports
+        sign-in with social identity providers such as Google, Outlook and
+        Facebook.
       </div>
     </div>
   );
