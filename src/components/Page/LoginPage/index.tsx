@@ -14,7 +14,7 @@ import {
 interface Props {
 }
 
-const appRealm = process.env.REACT_APP_ONEAUTH_APPSPACE_ID || '';
+const appRealm = process.env.REACT_APP_ONEAUTH_APPSPACE_ID || '212';
 const environment: any = process.env.REACT_APP_ENVIRONMENT || 'local';
 
 const LoginPage = (props: Props) => {
@@ -41,7 +41,7 @@ const LoginPage = (props: Props) => {
   }
 
   const onSignup = (data: AuthliteTypes.SignupRequest) => {
-    AuthliteAuthenticationService.signup(environment, 212, data, "1d9524a6-30df-4b3c-9402-503f4011896c").then((response: AuthliteTypes.SignupResponse) => {
+    AuthliteAuthenticationService.signup(environment, appRealm, data, "3a123ef3-417e-4b11-b808-1d574f8c6ce6").then((response: AuthliteTypes.SignupResponse) => {
       console.log(response);
       if (response.outcome === "SUCCESS") {
         setView(AuthliteTypes.PageView.placeholder);
@@ -52,7 +52,7 @@ const LoginPage = (props: Props) => {
   }
 
   const onForgotPassword = (data: AuthliteTypes.SignupRequest) => {
-    AuthliteAuthenticationService.resetPasswordLink(environment, 212, data).then((response: AuthliteTypes.ForgotPasswordResponse) => {
+    AuthliteAuthenticationService.resetPasswordLink(environment, appRealm, data).then((response: AuthliteTypes.ForgotPasswordResponse) => {
       console.log(response);
       if (response.outcome === "SUCCESS") {
         setView(AuthliteTypes.PageView.placeholder);
@@ -63,7 +63,7 @@ const LoginPage = (props: Props) => {
   }
 
   const onResendVerifyLink = (data: AuthliteTypes.ResendVerifyLinkRequest) => {
-    AuthliteAuthenticationService.resendVerifyLink(environment, 212, data).then((response: AuthliteTypes.ResendVerifyLinkResponse) => {
+    AuthliteAuthenticationService.resendVerifyLink(environment, appRealm, data).then((response: AuthliteTypes.ResendVerifyLinkResponse) => {
       console.log(response);
       if (response.outcome === "SUCCESS") {
         setView(AuthliteTypes.PageView.placeholder);
