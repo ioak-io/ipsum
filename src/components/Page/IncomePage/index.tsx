@@ -6,7 +6,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import OakButton from '../../../oakui/wc/OakButton';
 import ListIncome from './ListIncome';
 import './style.scss';
 import { fetchAndSetIncomeItems } from '../../../store/actions/IncomeActions';
